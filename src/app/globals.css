@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: #f3f8f1;
+  background-image: radial-gradient(circle at 10% 0%, rgba(75, 155, 52, 0.08), transparent 45%);
+  color: #132b14;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+::selection {
+  background: rgba(75, 155, 52, 0.25);
+}
