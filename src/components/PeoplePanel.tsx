@@ -134,7 +134,7 @@ export default function PeoplePanel({
           {error && <p className="text-xs text-red-500 sm:col-span-5">{error}</p>}
           <p className="text-xs text-slate-400 sm:col-span-5">
             Share the username and temp password with them. Add their Google email too and they can also sign
-            in with the "Continue with Google" button instead.
+            in with the &quot;Continue with Google&quot; button instead.
           </p>
         </form>
       )}

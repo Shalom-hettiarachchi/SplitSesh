@@ -101,7 +101,7 @@ export default function SetupPage() {
         </>
       )}
       <p className="mt-4 text-center text-xs text-slate-400">
-        You'll be the host — you can add friend accounts afterwards.
+        You&apos;ll be the host — you can add friend accounts afterwards.
       </p>
     </AuthCard>
   );

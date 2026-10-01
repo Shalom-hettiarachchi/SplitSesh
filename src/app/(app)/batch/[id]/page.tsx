@@ -390,7 +390,7 @@ export default function BatchDetail() {
             </div>
           </div>
           <div>
-            <p className="mb-1 text-xs font-medium text-slate-500">Who's in on this round?</p>
+            <p className="mb-1 text-xs font-medium text-slate-500">Who&apos;s in on this round?</p>
             <div className="flex flex-wrap gap-2">
               {members.map((m) => (
                 <label
