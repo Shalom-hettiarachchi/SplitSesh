@@ -19,13 +19,16 @@ function getClientPromise(): Promise<MongoClient> {
 
   if (process.env.NODE_ENV === "development") {
     if (!global._mongoClientPromise) {
-      global._mongoClientPromise = new MongoClient(uri).connect();
+      global._mongoClientPromise = new MongoClient(uri, { serverSelectionTimeoutMS: 8000 }).connect();
     }
     return global._mongoClientPromise;
   }
 
   if (!clientPromise) {
-    clientPromise = new MongoClient(uri).connect();
+    clientPromise = new MongoClient(uri, { serverSelectionTimeoutMS: 8000 }).connect().catch((err) => {
+      clientPromise = undefined; // don't cache a failed attempt
+      throw err;
+    });
   }
   return clientPromise;
 }

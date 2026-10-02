@@ -59,7 +59,7 @@ function LoginForm() {
     router.refresh();
   }
 
-  if (checking) return null;
+  if (checking) return <p className="p-8 text-center text-sm text-slate-400">Loading…</p>;
 
   return (
     <AuthCard title="SplitSesh" subtitle="Sign in to log a round or settle up">
