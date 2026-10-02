@@ -16,17 +16,25 @@ export default function SetupPage() {
   const [googleReady, setGoogleReady] = useState(false);
 
   useEffect(() => {
-    Promise.all([
-      fetch("/api/auth/status").then((r) => r.json()),
-      fetch("/api/auth/google/status").then((r) => r.json()),
-    ]).then(([status, google]) => {
-      if (status.hasUsers) {
-        router.replace("/login");
-        return;
-      }
-      setGoogleReady(google.configured);
-      setChecking(false);
-    });
+    const load = (url: string) =>
+      fetch(url).then((r) => {
+        if (!r.ok) throw new Error(`${url} failed`);
+        return r.json();
+      });
+
+    Promise.all([load("/api/auth/status"), load("/api/auth/google/status")])
+      .then(([status, google]) => {
+        if (status.hasUsers) {
+          router.replace("/login");
+          return;
+        }
+        setGoogleReady(google.configured);
+        setChecking(false);
+      })
+      .catch(() => {
+        setError("Can't reach the database right now. Try again in a moment.");
+        setChecking(false);
+      });
   }, [router]);
 
   async function submit(e: React.FormEvent) {
